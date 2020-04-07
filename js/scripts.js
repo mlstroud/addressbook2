@@ -57,7 +57,8 @@ function displayContactDetails(addressBookToDisplay) {
   var contactsList = $("ul#contacts");
   var htmlForContactInfo = "";
   addressBookToDisplay.contacts.forEach(function (contact) {
-    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + " " + contact.address1 + " " + contact.address2 + "</li>";
+    htmlForContactInfo += "<li id=" + contact.id + ">" + contact.firstName + " " + contact.lastName + " </li>";
+    console.log(contact.address1);
   });
   contactsList.html(htmlForContactInfo);
 }
@@ -73,13 +74,9 @@ function showContact(contactId) {
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + + contact.id + ">Delete</button>");
+  console.log(contact.address2)
 };
 
-// function showSecondAddress() {
-//   $("button#additional-address-button").on("click", "button", function () {
-//     $("#second-address").show();
-//   })
-// };
 
 function attachContactListeners() {
   $("ul#contacts").on("click", "li", function () {
@@ -111,8 +108,8 @@ $(document).ready(function () {
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-number").val("");
-    $("input#address1").val("");
-    $("input#address2").val("");
+    $("input#new-address1").val("");
+    $("input#new-address2").val("");
     $("#second-address").hide();
 
     var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedAddress1, inputtedAddress2);
